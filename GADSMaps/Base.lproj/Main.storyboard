@@ -23,28 +23,39 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Qky-NQ-fPb"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyN-db-4hJ">
-                                <rect key="frame" x="10" y="10" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCQ-Xd-ULn"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="A40-0e-RGY">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="egD-Bd-MOD"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="8qg-Mu-yXM"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WnJ-Qe-B7m">
+                                <rect key="frame" x="36" y="520" width="250" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="8YZ-9X-6rP"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Satélite"/>
+                                    <segment title="Hibrido"/>
+                                </segments>
+                                <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="estiloDeMapa:" destination="BYZ-38-t0r" eventType="valueChanged" id="itB-CB-pjU"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="A40-0e-RGY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HdA-24-kXb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WnJ-Qe-B7m" secondAttribute="bottom" constant="20" id="NmY-oO-3XN"/>
                             <constraint firstItem="A40-0e-RGY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZJe-Rd-f3L"/>
+                            <constraint firstItem="WnJ-Qe-B7m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a1v-ct-bNG"/>
                             <constraint firstAttribute="trailing" secondItem="A40-0e-RGY" secondAttribute="trailing" id="dEY-8m-MtX"/>
                         </constraints>
                     </view>
@@ -54,7 +65,9 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TXt-lh-lJC">
                                 <rect key="frame" x="16" y="7" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Centro"/>
+                                <state key="normal" title="Centro">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dn5-Ng-rGj"/>
                                     <action selector="vaiParaCentro:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xF7-zC-cz5"/>
@@ -64,7 +77,9 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Eg-CQ-1Xq">
                             <rect key="frame" x="125" y="7" width="71" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Meu Local"/>
+                            <state key="normal" title="Meu Local">
+                                <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LPN-KT-bh0"/>
                             </connections>
@@ -73,7 +88,9 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FWy-7g-aVd">
                                 <rect key="frame" x="245" y="7" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ipanema"/>
+                                <state key="normal" title="Ipanema">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UCw-DO-bh8"/>
                                     <action selector="vaiParaIpanema:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Sc-pj-5fT"/>

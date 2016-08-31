@@ -78,11 +78,13 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
         var coordenate = CLLocationCoordinate2D()
         
-        coordenate.latitude = 39.282526
-        coordenate.longitude = -76.580806
+        coordenate.latitude = -22.900939
+        coordenate.longitude = -43.177990
         
         let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
         self.mapView.setRegion(region, animated: true)
+        
+        adicionaPins()
     }
     
     @IBAction func vaiParaIpanema(sender: UIButton) {
@@ -94,38 +96,51 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
         let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
         self.mapView.setRegion(region, animated: true)
+        
+        adicionaPins()
     }
     
     func adicionaPins() {
-        let pinBaltimore = MKPointAnnotation()
+        
+        let pinCentro = MKPointAnnotation()
         var coord1 = CLLocationCoordinate2D()
-        coord1.latitude = 39.282526
-        coord1.longitude = -76.580806
-        pinBaltimore.coordinate = coord1
-        pinBaltimore.title = "Baltimore"
-        pinBaltimore.subtitle = "Um, lugar nos EUA"
+        coord1.latitude = -22.900939
+        coord1.longitude = -43.177990
+        pinCentro.coordinate = coord1
+        pinCentro.title = "Centro"
+        pinCentro.subtitle = "Cidade do Rio de Janeiro"
         
         
-        let pinRio = MKPointAnnotation()
+        let pinIpanema = MKPointAnnotation()
         var coord2 = CLLocationCoordinate2D()
-        coord2.latitude = -22.9088923
-        coord2.longitude = -43.1771377
-        pinRio.coordinate = coord2
-        pinRio.title = "Rio"
-        pinRio.subtitle = "Tem bala perdida."
+        coord2.latitude = -22.986660
+        coord2.longitude = -43.203642
+        pinIpanema.coordinate = coord2
+        pinIpanema.title = "Ipanema"
+        pinIpanema.subtitle = "Praia de Ipanema."
         
-        let pinParis = MKPointAnnotation()
-        var coord3 = CLLocationCoordinate2D()
-        coord3.latitude = 48.859083
-        coord3.longitude = 2.294694
-        pinParis.coordinate = coord3
-        pinParis.title = "Paris"
-        pinParis.subtitle = "Cidade luz."
-        
-        self.mapView.addAnnotation(pinBaltimore)
-        self.mapView.addAnnotation(pinRio)
-        self.mapView.addAnnotation(pinParis)
+        self.mapView.addAnnotation(pinCentro)
+        self.mapView.addAnnotation(pinIpanema)
     }
+    
+    @IBAction func estiloDeMapa(sender: UISegmentedControl) {
+        
+        let index = sender.selectedSegmentIndex
+        if (index == 0) {
+            
+            self.mapView.mapType = .Standard
+            
+        } else if (index == 1) {
+            
+            self.mapView.mapType = .Satellite
+            
+        } else {
+            
+            self.mapView.mapType = .Hybrid
+            
+        }
+    }
+    
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -145,7 +160,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("Tocou no botão!")
         
-        let url = NSURL(string: "http://www.infnet.edu.br")
+        let url = NSURL(string: "https://www.google.com.br/maps/place/Rio+de+Janeiro,+RJ/@-22.9103552,-43.7285293,10z/data=!3m1!4b1!4m5!3m4!1s0x9bde559108a05b:0x50dc426c672fd24e!8m2!3d-22.9068467!4d-43.1728965")
         UIApplication.sharedApplication().openURL(url!)
     }
     
