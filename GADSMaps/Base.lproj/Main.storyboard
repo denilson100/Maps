@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GADSMaps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Maps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,6 +23,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Qky-NQ-fPb"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyN-db-4hJ">
+                                <rect key="frame" x="10" y="10" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCQ-Xd-ULn"/>
+                                </connections>
+                            </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="A40-0e-RGY">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <constraints>
@@ -43,18 +50,36 @@
                     </view>
                     <navigationItem key="navigationItem" id="JYT-h0-wXp">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0Yu-LY-rdP">
-                            <rect key="frame" x="28" y="7" width="264" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="uBd-cf-jzU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TXt-lh-lJC">
+                                <rect key="frame" x="16" y="7" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Centro"/>
+                                <connections>
+                                    <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dn5-Ng-rGj"/>
+                                    <action selector="vaiParaCentro:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xF7-zC-cz5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Eg-CQ-1Xq">
+                            <rect key="frame" x="125" y="7" width="71" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Baltimore"/>
-                                <segment title="Rio"/>
-                                <segment title="Paris"/>
-                            </segments>
+                            <state key="normal" title="Meu Local"/>
                             <connections>
-                                <action selector="changeRegion:" destination="BYZ-38-t0r" eventType="valueChanged" id="G6Y-T6-ABu"/>
+                                <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LPN-KT-bh0"/>
                             </connections>
-                        </segmentedControl>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="M4s-Bh-1CC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FWy-7g-aVd">
+                                <rect key="frame" x="245" y="7" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ipanema"/>
+                                <connections>
+                                    <action selector="meuLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UCw-DO-bh8"/>
+                                    <action selector="vaiParaIpanema:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Sc-pj-5fT"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>

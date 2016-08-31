@@ -14,36 +14,83 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
         
         var coordenate = CLLocationCoordinate2D()
         coordenate.latitude = 39.282526
         coordenate.longitude = -76.580806
         
-        var region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
+        let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
         self.mapView.setRegion(region, animated: true)
         
         adicionaPins()
     }
 
-    @IBAction func changeRegion(sender: UISegmentedControl) {
+//    @IBAction func changeRegion(sender: UISegmentedControl) {
+//        
+//        var coordenate = CLLocationCoordinate2D()
+//        let index = sender.selectedSegmentIndex
+//        
+//        if (index == 0) {
+//            coordenate.latitude = 39.282526
+//            coordenate.longitude = -76.580806
+//            
+//        } else if (index == 1) {
+//            coordenate.latitude = -22.9088923
+//            coordenate.longitude = -43.1771377
+//            
+//            meuLocal()
+//            
+//        } else {
+//            coordenate.latitude = 48.859083
+//            coordenate.longitude = 2.294694
+//        }
+//        
+//        let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
+//        self.mapView.setRegion(region, animated: true)
+//    }
+    
+    func meuLocal() {
+        
+        let userLocation:MKUserLocation = self.mapView.userLocation
+        let coordinate:CLLocationCoordinate2D = userLocation.location!.coordinate
+        
+        let region:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func meuLocal(sender: UIButton) {
+        let userLocation:MKUserLocation = self.mapView.userLocation
+        let coordinate:CLLocationCoordinate2D = userLocation.location!.coordinate
+        
+        let region:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func vaiParaCentro(sender: UIButton) {
         
         var coordenate = CLLocationCoordinate2D()
-        let index = sender.selectedSegmentIndex
         
-        if (index == 0) {
-            coordenate.latitude = 39.282526
-            coordenate.longitude = -76.580806
-            
-        } else if (index == 1) {
-            coordenate.latitude = -22.9088923
-            coordenate.longitude = -43.1771377
-        } else {
-            coordenate.latitude = 48.859083
-            coordenate.longitude = 2.294694
-        }
+        coordenate.latitude = 39.282526
+        coordenate.longitude = -76.580806
+        
+        let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func vaiParaIpanema(sender: UIButton) {
+        
+        var coordenate = CLLocationCoordinate2D()
+        
+        coordenate.latitude = -22.986660
+        coordenate.longitude = -43.203642
         
         let region = MKCoordinateRegionMakeWithDistance(coordenate, 1000, 1000)
         self.mapView.setRegion(region, animated: true)
@@ -104,15 +151,24 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
+        //Faz a busca na área e apresenta no console os resultados
         let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchBar.text
         request.region = self.mapView.region
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.startWithCompletionHandler { (response:MKLocalSearchResponse?, error:NSError?) in
             
             if let sucesso = response {
                 for item in sucesso.mapItems {
-                    print(item.name)
+                    print(item.placemark.name)
+                    
+                    //Faz a marcação dos pins na tela.
+                    let pin = MKPointAnnotation()
+                    pin.coordinate = item.placemark.coordinate
+                    pin.title = item.placemark.name
+                    pin.subtitle = item.placemark.title
+                    self.mapView.addAnnotation(pin)
                     
                 }
             } else {
