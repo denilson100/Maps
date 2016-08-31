@@ -119,8 +119,38 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         pinIpanema.title = "Ipanema"
         pinIpanema.subtitle = "Praia de Ipanema."
         
+        //Infnet
+        let pinInfinet = MKPointAnnotation()
+        var coord3 = CLLocationCoordinate2D()
+        coord3.latitude = -22.906042
+        coord3.longitude = -43.176907
+        pinInfinet.coordinate = coord3
+        pinInfinet.title = "Infnet"
+        pinInfinet.subtitle = "Rua São José, 90."
+        
+        //Campo Do Santana
+        let pinCampoSantana = MKPointAnnotation()
+        var coord4 = CLLocationCoordinate2D()
+        coord4.latitude = -22.906903
+        coord4.longitude = -43.188912
+        pinCampoSantana.coordinate = coord4
+        pinCampoSantana.title = "Campo do Santana"
+        pinCampoSantana.subtitle = "Rio de Janeiro - RJ"
+        
+        //Campo Do Santana
+        let pinCountryClub = MKPointAnnotation()
+        var coord5 = CLLocationCoordinate2D()
+        coord5.latitude = -22.985190
+        coord5.longitude = -43.212508
+        pinCountryClub.coordinate = coord5
+        pinCountryClub.title = "Country Club"
+        pinCountryClub.subtitle = "Ipanema - RJ"
+        
         self.mapView.addAnnotation(pinCentro)
         self.mapView.addAnnotation(pinIpanema)
+        self.mapView.addAnnotation(pinInfinet)
+        self.mapView.addAnnotation(pinCampoSantana)
+        self.mapView.addAnnotation(pinCountryClub)
     }
     
     @IBAction func estiloDeMapa(sender: UISegmentedControl) {
