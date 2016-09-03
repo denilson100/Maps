@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var coordenate = CLLocationCoordinate2D()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     func meuLocal() {
         
+        coordenate = CLLocationCoordinate2D()
         let userLocation:MKUserLocation = self.mapView.userLocation
         let coordinate:CLLocationCoordinate2D = userLocation.location!.coordinate
         
@@ -67,11 +69,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     }
     
     @IBAction func meuLocal(sender: UIButton) {
-        let userLocation:MKUserLocation = self.mapView.userLocation
-        let coordinate:CLLocationCoordinate2D = userLocation.location!.coordinate
-        
-        let region:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-        self.mapView.setRegion(region, animated: true)
+        meuLocal()
     }
     
     @IBAction func vaiParaCentro(sender: UIButton) {
