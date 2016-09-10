@@ -17,25 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="60f-jM-0UO">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="60f-jM-0UO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Qky-NQ-fPb"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="A40-0e-RGY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="egD-Bd-MOD"/>
-                                </constraints>
-                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8qg-Mu-yXM"/>
-                                </connections>
-                            </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WnJ-Qe-B7m">
-                                <rect key="frame" x="36" y="520" width="250" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WnJ-Qe-B7m">
+                                <rect key="frame" x="35" y="520" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="8YZ-9X-6rP"/>
                                 </constraints>
@@ -49,14 +38,29 @@
                                     <action selector="estiloDeMapa:" destination="BYZ-38-t0r" eventType="valueChanged" id="itB-CB-pjU"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="A40-0e-RGY">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="yyG-3m-XBA"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8qg-Mu-yXM"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="A40-0e-RGY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HdA-24-kXb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="60f-jM-0UO" secondAttribute="bottom" id="7BT-n9-afc"/>
+                            <constraint firstAttribute="trailing" secondItem="60f-jM-0UO" secondAttribute="trailing" id="F4c-1o-N42"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WnJ-Qe-B7m" secondAttribute="bottom" constant="20" id="NmY-oO-3XN"/>
-                            <constraint firstItem="A40-0e-RGY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZJe-Rd-f3L"/>
+                            <constraint firstItem="60f-jM-0UO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VIK-oH-Xfv"/>
                             <constraint firstItem="WnJ-Qe-B7m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a1v-ct-bNG"/>
-                            <constraint firstAttribute="trailing" secondItem="A40-0e-RGY" secondAttribute="trailing" id="dEY-8m-MtX"/>
+                            <constraint firstItem="60f-jM-0UO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h9u-Kq-utw"/>
+                            <constraint firstItem="A40-0e-RGY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="oQn-A0-fgr"/>
+                            <constraint firstAttribute="trailing" secondItem="A40-0e-RGY" secondAttribute="trailing" id="taO-6U-H0L"/>
+                            <constraint firstItem="A40-0e-RGY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zSL-Ex-7LQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JYT-h0-wXp">
@@ -98,7 +102,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapView" destination="60f-jM-0UO" id="F8K-SJ-P0S"/>
